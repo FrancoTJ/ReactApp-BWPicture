@@ -1,12 +1,14 @@
 import ItemList from "../ItemList/ItemList";
+import './ItemListContainer.css';
 
-function ItemListContainer() {
+function ItemListContainer(props) {
   
     return (
-      <>
-        <p>ItemListContainer Test</p>
+      <div className='itemListContainer'>
+        <p>Despliegue de props ItemListContainer (prop con borde verde): <span className='propsStyle'>{props.greetings}</span></p>
         <ItemList />
-      </>
+        
+      </div>
     )
   }
   

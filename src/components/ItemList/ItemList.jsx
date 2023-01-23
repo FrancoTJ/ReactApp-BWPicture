@@ -1,12 +1,13 @@
 import Item from '../Item/Item'
+import './ItemList.css'
 
 function ItemList() {
   
     return (
-      <>
-        <p>ItemList Test</p>
+      <div className='itemList'>
+        <p>ItemList Test (bordes activos únicamente para test).</p>
         <Item />
-      </>
+      </div>
     )
   }
   

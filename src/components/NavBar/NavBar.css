@@ -1,0 +1,15 @@
+.nav-link:hover {
+  transition:all 1s ease;
+}
+
+.nav-link-fondos:hover {
+  background:#52f568;
+}
+
+.nav-link-paisajes:hover {
+  background:#52a6f5;
+}
+
+.nav-link-personajes:hover {
+  background:#f55252;
+}
