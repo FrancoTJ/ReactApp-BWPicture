@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'React';
+import {useState} from 'react';
 
 function CartWidget() {
     const [numArticulos, sumArticulo] = useState(0)
