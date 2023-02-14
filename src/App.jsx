@@ -1,15 +1,14 @@
-import NavBar from './components/NavBar/NavBar'
+import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'
+import './App.css';
 
-function App() {
-  
+export function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer greetings='Bienvenido nombre-usuario' />
+      <ItemListContainer greetings="parámetro pasado por prop" />
     </>
   )
 }

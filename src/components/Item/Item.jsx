@@ -3,28 +3,27 @@ import { useState } from 'react'
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-import placeHolder286 from "../../assets/placeHolder286.png";
 import "./Item.css";
 
-function Item() {
-  const [ contador , setCount ]  = useState(0)
+function Item(props) {
+// function handleCount(){
+//   console.log("clicked")
+// }
 
-  const handleCount = () => {
-    setCount(contador + 1);
-  };
 
   return (
     <div className="itemContainer">
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={placeHolder286} />
+        <Card.Img variant="top" src={props.img} />
         <Card.Body>
-          <Card.Title>Tarjeta de Imagen</Card.Title>
+          <Card.Title>(Id.{props.id}) {props.name} </Card.Title>
           <Card.Text>
-            Ejemplo de imagen a listar, definición y características de misma.
+            
+            Category: {props.category}, Stock: {props.stock}
           </Card.Text>
-          <Button variant="primary" onClick={handleCount}>
+          {/* <Button variant="primary" onClick={handleCount}>
             Seleccionado: {contador}
-          </Button>
+          </Button> */}
         </Card.Body>
       </Card>
     </div>

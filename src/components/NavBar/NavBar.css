@@ -2,14 +2,14 @@
   transition:all 1s ease;
 }
 
-.nav-link-fondos:hover {
+.nav-link-nature:hover {
   background:#52f568;
 }
 
-.nav-link-paisajes:hover {
+.nav-link-gaming:hover {
   background:#52a6f5;
 }
 
-.nav-link-personajes:hover {
+.nav-link-movies:hover {
   background:#f55252;
 }

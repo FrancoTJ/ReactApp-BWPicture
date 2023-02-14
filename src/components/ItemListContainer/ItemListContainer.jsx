@@ -1,14 +1,28 @@
+import { useEffect, useState } from "react";
+import gFetch from "../../utils/gFetch";
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
 
 function ItemListContainer(props) {
-  return (
+  const [productos, setProductos] = useState([]);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    gFetch()
+      .then((res) => {
+        setCargando(false);
+        // console.log(res)
+        return setProductos(res);
+      })
+      .catch((error) => console.log(error))
+      // .finally(() => console.log("Hacer algo al final si se necesita"));
+  }, []);
+
+  return cargando ? (
+    <p>Cargando...</p>
+  ) : (
     <div className="itemListContainer">
-      <p>
-        Despliegue de props ItemListContainer (prop con borde verde):{" "}
-        <span className="propsStyle">{props.greetings}</span>
-      </p>
-      <ItemList />
+      <ItemList list={productos}/>
     </div>
   );
 }

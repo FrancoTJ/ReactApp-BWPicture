@@ -1,14 +1,29 @@
-import Item from '../Item/Item'
-import './ItemList.css'
+import Item from "../Item/Item";
+import "./ItemList.css";
 
-function ItemList() {
-  
-    return (
-      <div className='itemList'>
-        <p>ItemList Test (bordes activos únicamente para test).</p>
-        <Item />
-      </div>
-    )
-  }
-  
-  export default ItemList;
+function ItemList(props) {
+  return (
+    <>
+      {props.list.map((p) => (
+        <Item
+          key={p.id}
+          id={p.id}
+          name={p.name}
+          stock={p.stock}
+          category={p.category}
+          img={p.img}
+        />
+      ))}{" "}
+    </>
+  );
+}
+
+export default ItemList;
+
+// {/* <Item
+//   id={producto.id}
+//   name={producto.name}
+//   stock={producto.stock}
+//   category={producto.category}
+//   img={producto.img}
+// /> */}
