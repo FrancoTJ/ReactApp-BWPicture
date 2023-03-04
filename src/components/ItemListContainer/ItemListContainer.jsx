@@ -5,7 +5,7 @@ import { filterCategory } from "../../utils/gFetch";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import EmptyCategory from "../EmptyCategory/emptyCategory";
+import EmptyCategory from "../EmptyCategory/EmptyCategory";
 import Loading from "../Loading/Loading";
 import "./ItemListContainer.css";
 

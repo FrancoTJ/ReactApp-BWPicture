@@ -10,6 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 export function App() {
+
+
   return (
     <BrowserRouter>
       <NavBar />
