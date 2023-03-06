@@ -9,13 +9,13 @@ let productos = [
 const gFetch = () => {
   return new Promise((res, rej) => {
     // Create
-    setTimeout(() => res(productos) , 1000);
+    setTimeout(() => res(productos) , 500);
   });
 };
 
-export const findProducto = (filtro) => {
+export const findProduct = (idProduct) => {
   // return productos[0]
-  return productos.find(prod => prod.id == filtro)
+  return productos.find(prod => prod.id == idProduct)
 };
 
 export const filterCategory = (category) => {

@@ -20,7 +20,7 @@ export function App() {
         <Route path="/category/:selCategory" element={<ItemListContainer />} />
         {/* <Route path="/category" element={<ItemListContainer greetings="nature" />} /> */}
 
-        <Route path="/detail/:idProducto" element={<ItemDetailContainer />} />
+        <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
         <Route path="*" element={<FailRoute />} />
       </Routes>
     </BrowserRouter>

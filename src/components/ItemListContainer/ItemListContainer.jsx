@@ -1,18 +1,20 @@
-import gFetch from "../../utils/gFetch";
-import ItemList from "../ItemList/ItemList";
-import { filterCategory } from "../../utils/gFetch";
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import EmptyCategory from "../EmptyCategory/EmptyCategory";
-import Loading from "../Loading/Loading";
+import ItemList from "../ItemList/ItemList";
+
 import "./ItemListContainer.css";
+import EmptySelection from "../EmptySelection/EmptySelection";
+import Loading from "../Loading/Loading";
+import { filterCategory } from "../../utils/gFetch";
+import gFetch from "../../utils/gFetch";
 
 function ItemListContainer(props) {
   const [products, setProductos] = useState([]);
   const [loading, setCargando] = useState(true);
   const { selCategory } = useParams();
+
+  console.log(selCategory)
 
   useEffect(() => {
     setCargando(true);
@@ -30,8 +32,6 @@ function ItemListContainer(props) {
     // .finally(() => console.log("Hacer algo al final si se necesita"));
   }, [selCategory]);
 
-  console.log(products.length);
-
   return loading ? (
     <Loading />
   ) : (
@@ -39,9 +39,7 @@ function ItemListContainer(props) {
       {products.length !== 0 ? (
         <ItemList list={products} />
       ) : (
-        <>
-          <EmptyCategory />
-        </>
+          <EmptySelection />
       )}
     </div>
   );

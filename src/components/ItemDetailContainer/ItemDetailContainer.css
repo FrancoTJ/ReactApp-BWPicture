@@ -1,0 +1,15 @@
+.itemDetailContainer {
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.itemDetailContainer-title {
+    margin: 15px;
+}
+
+.card-lblId, .card-lblName, .card-lblCategory, .card-lblQuantity {
+    font-weight: bold
+}
