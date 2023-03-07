@@ -1,20 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
 import "./Item.css";
 
 function Item(props) {
-  // function handleCount(){
-  //   console.log("clicked")
-  // }
-
   return (
     <div className="itemContainer">
       <Card style={{ width: "18rem" }}>
-        <NavLink to={`/detail/${props.id}`} > 
+        <NavLink to={`/detail/${props.id}`}>
           <Card.Body>
             <Card.Title>
               {props.id}. {props.name}{" "}

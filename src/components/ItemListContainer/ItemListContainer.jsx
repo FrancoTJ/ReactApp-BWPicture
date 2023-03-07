@@ -14,21 +14,18 @@ function ItemListContainer(props) {
   const [loading, setCargando] = useState(true);
   const { selCategory } = useParams();
 
-  console.log(selCategory)
-
   useEffect(() => {
     setCargando(true);
     gFetch()
       .then((res) => {
         setCargando(false);
-        // console.log(res)
         if (selCategory) {
           return setProductos(filterCategory(selCategory));
         } else {
           return setProductos(res);
         }
       })
-      .catch((error) => console.log(error));
+      // .catch((error) => console.log(error));
     // .finally(() => console.log("Hacer algo al final si se necesita"));
   }, [selCategory]);
 

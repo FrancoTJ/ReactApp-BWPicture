@@ -3,14 +3,11 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import FailRoute from "./components/FailRoute/FailRoute";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 export function App() {
-
 
   return (
     <BrowserRouter>
@@ -18,8 +15,6 @@ export function App() {
       <Routes>
         <Route path="/" element={<ItemListContainer greetings="sin ruta indicada" />} />
         <Route path="/category/:selCategory" element={<ItemListContainer />} />
-        {/* <Route path="/category" element={<ItemListContainer greetings="nature" />} /> */}
-
         <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
         <Route path="*" element={<FailRoute />} />
       </Routes>

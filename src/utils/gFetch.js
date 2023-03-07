@@ -8,18 +8,15 @@ let productos = [
 
 const gFetch = () => {
   return new Promise((res, rej) => {
-    // Create
     setTimeout(() => res(productos) , 500);
   });
 };
 
 export const findProduct = (idProduct) => {
-  // return productos[0]
   return productos.find(prod => prod.id == idProduct)
 };
 
 export const filterCategory = (category) => {
-  // return productos[0]
   return productos.filter(prod => prod.category == category)
 };
 
