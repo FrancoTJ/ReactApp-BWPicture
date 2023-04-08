@@ -28,7 +28,7 @@ function ItemDetailContainer() {
     <Loading />
   ) : (
     <div className="itemListContainer">
-      {oneProduct ? <ItemDetail producto={oneProduct} /> : <EmptySelection />}
+      {oneProduct ? <ItemDetail product={oneProduct} /> : <EmptySelection />}
     </div>
   );
 }

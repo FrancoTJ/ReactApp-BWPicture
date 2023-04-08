@@ -1,32 +1,40 @@
 import { NavLink } from "react-router-dom";
-
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+import { useContext } from "react";
+import { CartContext } from "../../utils/CartContext";
 import "./ItemDetail.css";
 
-function ItemDetail({ producto }) {
+function ItemDetail({ product }) {
+  const { cartItems, addCartItem, cartFindItem } = useContext(CartContext)
+  let itemInCart = cartFindItem(product)
+
   return (
     <div className="itemDetailContainer">
       <h2 className="itemDetailContainer-title">Product Selected Detail:</h2>
       <Card style={{ width: "18rem" }}>
-        <NavLink to={`/detail/${producto.id}`}>
+        <NavLink to={`/detail/${product.id}`}>
           <Card.Body>
-            <Card.Img variant="top" src={producto.img} />
+            <Card.Img variant="top" src={product.img} />
             <Card.Title>
-              <span className="card-lblId">Id:</span> {producto.id} -{" "}
-              <span className="card-lblName">Name:</span> {producto.name}{" "}
+              <span className="card-lblId">Id:</span> {product.id} -{" "}
+              <span className="card-lblName">Name:</span> {product.name}{" "}
             </Card.Title>
             <Card.Text>
               <span className="card-lblCategory">Category:</span>{" "}
-              {producto.category} -{" "}
-              <span className="card-lblQuantity">Quantity:</span>{" "}
-              {producto.stock}
+              {product.category} -{" "}
+              <span className="card-lblQuantity">Stock:</span>{" "}
+              {product.stock}
             </Card.Text>
-
-            {/* <Button variant="primary" onClick={handleCount}>
-            Seleccionado: {contador}
-          </Button> */}
+            <div className="cardDetailBuy">
+            {/* {itemInCart && <span className="cardUnitsInCart">(In cart: {itemInCart.cartUnits}) </span>} */}
+              {/* {console.log(cartItems)}
+              {console.log(cartFindItem(product))} */}
+              <Button variant="success" onClick={() => addCartItem(product)}>
+                Add {itemInCart && `(In cart: ${itemInCart.cartUnits})`}
+              </Button>
+            </div>
           </Card.Body>
         </NavLink>
       </Card>
