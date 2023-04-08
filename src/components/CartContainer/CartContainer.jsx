@@ -21,7 +21,7 @@ function CartContainer() {
           {cartItems.map((item) => (
             <Card key={item.id}>
               <Card.Body className="cartCard">
-                <NavLink to={`/detail/${item.id}`}>
+                <NavLink className="cartCard-Link" to={`/detail/${item.id}`}>
                   <Card.Title>
                     Id.{item.id} - Name: {item.name}{" "}
                     {/*  - Cat: {item.category} */}

@@ -15,3 +15,9 @@ h1, h3 {
 .cardRemoveButton{
   margin: 10px;
 }
+
+
+.cartCard-Link:hover {
+  transition: all 1s ease;
+  background:#dee0fd;
+}
