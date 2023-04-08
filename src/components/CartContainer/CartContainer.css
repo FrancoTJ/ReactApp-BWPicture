@@ -1,6 +1,17 @@
 .cartCard {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
+}
 
+h1, h3 {
+  padding: 30px;
+}
+
+.card-title {
+  display: inline;
+}
+
+.cardRemoveButton{
+  margin: 10px;
 }

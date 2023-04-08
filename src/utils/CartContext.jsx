@@ -2,57 +2,60 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  const [ cartItems, setCartItems ] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  //   const [ cartItems, setCartItems ] = useState([{ id: 1, name: "PixelArt Mario", category:'gaming', stock: 10, img:'https://graceful-pothos-e73712.netlify.app/img/mariKart1.jpg', cartUnits: 5 }]);
 
   const addCartItem = (Item) => {
-    let position = cartItems.findIndex(product => product.id == Item.id)
-    console.log(position)
-    if(position == -1){ //No existe en listado
-        console.log("si no existe intenta agregar")
-        Item.cartUnits = 1;
-        setCartItems(oldItems => [...oldItems, Item])
-        console.log(cartItems)
-        console.log("agregó y puso 1")
-    } else { //Si existe en listado
-        console.log("intenta sumar 1")
-        // let auxCartList = cartItems
-        // auxCartList[position].cartUnits++
-        // setCartItems(cartItems=auxCartList)
-
-
-        setCartItems(
-            cartItems.map((Item) =>
-                // Here you accept a id argument to the function and replace it with hard coded 🤪 2, to make it dynamic.
-                Item.id === cartItems[position].id
-                    ? { ...Item, cartUnits: cartItems[position].cartUnits + 1 }
-                    : { ...Item }
-            )
-        );
-
-
-
-        console.log("sumó 1")
+    let position = cartItems.findIndex((product) => product.id == Item.id);
+    if (position == -1) {
+      //No existe en listado
+      Item.cartUnits = 1;
+      setCartItems((oldItems) => [...oldItems, Item]);
+    } else {
+      //Si ya existe en listado
+      setCartItems(
+        cartItems.map((Item) =>
+          Item.id === cartItems[position].id
+            ? { ...Item, cartUnits: cartItems[position].cartUnits + 1 }
+            : { ...Item }
+        )
+      );
     }
-    console.log(cartItems)
+  };
 
+  const removeCartItem = (Item) => {
+    setCartItems(
+      cartItems.filter((Product) => Product.id != Item.id)
+    );
   };
 
   const cartFindItem = (Item) => {
-    console.log("cartFindItem")
-    return cartItems.find(product => product.id == Item.id)
+    return cartItems.find((product) => product.id == Item.id);
   };
 
-//   const cartFindIndexItem = (Item) => {
-//     console.log("cartCountItem")
-//     return cartItems.find(product => product.id == Item.id)
-//   };
+  const cartCountItems = () => {
+    return cartItems.reduce(function (accumulator, Item) {
+      return accumulator + Item.cartUnits;
+    }, 0);
+  };
+
+  const cartTotalPriceItems = () => {
+    return cartItems.reduce(function (accumulator, Item) {
+      return accumulator + Item.price * Item.cartUnits;
+    }, 0);
+  };
 
   return (
-    <CartContext.Provider value={{
+    <CartContext.Provider
+      value={{
         cartItems,
         addCartItem,
-        cartFindItem
-    }}>
+        cartFindItem,
+        cartCountItems,
+        cartTotalPriceItems,
+        removeCartItem,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

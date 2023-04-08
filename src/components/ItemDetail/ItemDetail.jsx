@@ -7,15 +7,15 @@ import { CartContext } from "../../utils/CartContext";
 import "./ItemDetail.css";
 
 function ItemDetail({ product }) {
-  const { cartItems, addCartItem, cartFindItem } = useContext(CartContext)
-  let itemInCart = cartFindItem(product)
+  const { cartItems, addCartItem, cartFindItem } = useContext(CartContext);
+  let itemInCart = cartFindItem(product);
 
   return (
     <div className="itemDetailContainer">
       <h2 className="itemDetailContainer-title">Product Selected Detail:</h2>
       <Card style={{ width: "18rem" }}>
-        <NavLink to={`/detail/${product.id}`}>
-          <Card.Body>
+        <Card.Body>
+          <NavLink to={`/detail/${product.id}`}>
             <Card.Img variant="top" src={product.img} />
             <Card.Title>
               <span className="card-lblId">Id:</span> {product.id} -{" "}
@@ -24,19 +24,49 @@ function ItemDetail({ product }) {
             <Card.Text>
               <span className="card-lblCategory">Category:</span>{" "}
               {product.category} -{" "}
-              <span className="card-lblQuantity">Stock:</span>{" "}
-              {product.stock}
+              <span className="card-lblQuantity">Stock:</span> {product.stock}
+              <br />
+              <span className="card-price">
+                <span className="card-lblPrice">Price: </span>
+                <span className="card-lblPriceMount">${product.price}</span>
+              </span>
             </Card.Text>
-            <div className="cardDetailBuy">
-            {/* {itemInCart && <span className="cardUnitsInCart">(In cart: {itemInCart.cartUnits}) </span>} */}
-              {/* {console.log(cartItems)}
-              {console.log(cartFindItem(product))} */}
-              <Button variant="success" onClick={() => addCartItem(product)}>
-                Add {itemInCart && `(In cart: ${itemInCart.cartUnits})`}
+          </NavLink>
+          <div className="cardDetailBuy">
+            <NavLink to={`/cart`}>
+              <Button
+                variant="primary"
+                className="cardButton"
+                onClick={() => !itemInCart && addCartItem(product)}
+              >
+                Buy
               </Button>
-            </div>
-          </Card.Body>
-        </NavLink>
+            </NavLink>
+
+            <Button
+              variant="success"
+              className="cardButton"
+              onClick={() => addCartItem(product)}
+              disabled={itemInCart?.cartUnits >= product.stock}
+            >
+              Add {itemInCart && `(In cart: ${itemInCart.cartUnits})`}
+            </Button>
+          </div>
+
+          <div className="cardReturn">
+            <NavLink to={`/`}>
+              <Button
+                variant={itemInCart ? "outline-success" : "outline-secondary"}
+                className="cardButton"
+              >
+              {itemInCart ? "Continue shopping..." : "Back"}
+              </Button>
+            </NavLink>
+
+          </div>
+
+
+        </Card.Body>
       </Card>
     </div>
   );

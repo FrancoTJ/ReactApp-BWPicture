@@ -1,16 +1,14 @@
 import React from 'react';
-import {useState} from 'react';
+import { useContext } from "react";
+import { CartContext } from "../../utils/CartContext";
 
 function CartWidget() {
-    const [numArticulos, sumArticulo] = useState(0)
-  
-    const handleSumArticulos = () => {
-      sumArticulo(numArticulos + 1)
-    }
+  const { cartCountItems } = useContext(CartContext)
+  let countItems = cartCountItems()
 
     return (
       <>
-        🛒(<span className='numero-carrito' title='Click just to test' onClick={handleSumArticulos}>{numArticulos}</span>)
+        🛒(<span className='numero-carrito'>{countItems}</span>)
       </>
     )
   }

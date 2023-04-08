@@ -1,3 +1,6 @@
-.cardDetailBuy{
+.cardDetailBuy, .cardReturn{
     text-align: right;
+}
+.cardButton{
+    margin: 10px;
 }

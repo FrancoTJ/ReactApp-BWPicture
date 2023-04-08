@@ -9,6 +9,7 @@ function ItemList(props) {
           key={p.id}
           id={p.id}
           name={p.name}
+          price={p.price}
           stock={p.stock}
           category={p.category}
           img={p.img}

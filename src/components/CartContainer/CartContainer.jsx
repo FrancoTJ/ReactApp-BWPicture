@@ -1,29 +1,58 @@
 import { NavLink } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 import { useContext } from "react";
 import { CartContext } from "../../utils/CartContext";
+import EmptyCart from "../EmptyCart/EmptyCart";
 import "./CartContainer.css";
 
 function CartContainer() {
-  const { cartItems, addCartItem } = useContext(CartContext)
+  const { cartItems, cartCountItems, cartTotalPriceItems, removeCartItem } =
+    useContext(CartContext);
+  let countItems = cartCountItems();
+  let totalPrice = cartTotalPriceItems();
 
   return (
     <>
-      {cartItems.map((item) => (
+      {countItems ? (
+        <>
+          <h1>Shopping Cart:</h1>
+          {cartItems.map((item) => (
             <Card key={item.id}>
-              <NavLink to={`/detail/${item.id}`}>
-                <Card.Body className='cartCard'>
+              <Card.Body className="cartCard">
+                <NavLink to={`/detail/${item.id}`}>
                   <Card.Title>
-                    Id.{item.id} - Name: {item.name} {/*  - Cat: {item.category} */}
+                    Id.{item.id} - Name: {item.name}{" "}
+                    {/*  - Cat: {item.category} */}
                   </Card.Title>
-                  <Card.Img  src={item.img} style={{ maxWidth: 100,  padding: 10 }}/>
-                  <Card.Text> Quantity: {item.cartUnits}</Card.Text>
-                </Card.Body>
-              </NavLink>
+                  <Card.Img
+                    src={item.img}
+                    style={{ maxWidth: 100, padding: 10 }}
+                  />
+                </NavLink>
+                <Card.Text>
+                  {" "}
+                  Unit price: ${item.price} - Quantity: {item.cartUnits} -
+                  Total: $ {item.price * item.cartUnits}
+                </Card.Text>
+                <Button
+                  className="cardRemoveButton"
+                  variant="danger"
+                  onClick={() => removeCartItem(item)}
+                >
+                  X
+                </Button>
+              </Card.Body>
             </Card>
-        ))
-      }
+          ))}
+          <h3>
+            Total Units: {countItems} - Total Price: ${totalPrice}
+          </h3>
+        </>
+      ) : (
+        <EmptyCart/>
+      )}
     </>
   );
 }

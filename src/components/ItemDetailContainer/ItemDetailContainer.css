@@ -10,6 +10,21 @@
     margin: 15px;
 }
 
-.card-lblId, .card-lblName, .card-lblCategory, .card-lblQuantity {
+.card-lblId, .card-lblName, .card-lblCategory, .card-lblQuantity, .card-price {
     font-weight: bold
+}
+
+.card-price {
+    margin-top: 10px;
+    font-size: 150%;
+    
+}
+.card-lblPriceMount{
+    color: forestgreen;
+}
+.cardButton{
+    color:white !important;
+}
+.cardReturn button{
+    color:black !important;
 }

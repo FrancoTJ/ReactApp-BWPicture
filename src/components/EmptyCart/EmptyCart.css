@@ -1,0 +1,9 @@
+.emptyCart {
+    text-align: center;
+    margin: 8px;
+    padding: 8px;
+  }
+
+.emptyCart-text {
+    margin-bottom: 25px;
+}
