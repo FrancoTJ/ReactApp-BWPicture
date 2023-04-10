@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
-import "./ItemDetailContainer.css";
 import Loading from "../Loading/Loading";
 import EmptySelection from "../EmptySelection/EmptySelection";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import gFetch from "../../utils/gFetch";
-import { findProduct } from "../../utils/gFetch";
+import "./ItemDetailContainer.css";
 
 function ItemDetailContainer() {
   const [oneProduct, setOneProduct] = useState();
@@ -14,14 +13,14 @@ function ItemDetailContainer() {
   const { idProduct } = useParams();
 
   useEffect(() => {
-    setLoading(true);
-    gFetch().then((res) => {
-      setLoading(false);
-      if (idProduct) {
-        return setOneProduct(findProduct(idProduct));
-      }
-    });
-    // .catch((error) => console.log(error));
+    const db = getFirestore();
+    const query = doc(db, "products", idProduct);
+    getDoc(query)
+      .then((document) =>
+        setOneProduct({ id: document.id, ...document.data() })
+      )
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   }, [idProduct]);
 
   return loading ? (

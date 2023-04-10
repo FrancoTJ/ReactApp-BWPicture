@@ -1,11 +1,9 @@
-body, html, #root {
-  height: auto
-}
-
-.failroute {
+.failRoute {
   text-align: center;
+  padding: 8px;
+  margin: 8px;
 }
 
-.failroute-text {
-  padding-top: 50vh;
+.failRoute-text {
+  margin-bottom: 25px;
 }

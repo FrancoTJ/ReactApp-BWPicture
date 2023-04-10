@@ -10,7 +10,7 @@ function Item(props) {
         <NavLink to={`/detail/${props.id}`}>
           <Card.Body>
             <Card.Title>
-              {props.id}. {props.name}{" "}
+              {/* {props.id}.  */}{props.name}{" "}
             </Card.Title>
             <Card.Img variant="top" src={props.img} />
             <Card.Text>

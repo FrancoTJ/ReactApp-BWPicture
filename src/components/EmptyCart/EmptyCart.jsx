@@ -8,7 +8,7 @@ function EmptyCart() {
     <div className="emptyCart">
       <NavLink to={`/`}>
         <div>
-          <h2 className="emptyCart-text">🚧 Your cart is empty, select the products you like to buy...</h2>
+          <h2 className="emptyCart-text">🎁 Your cart is empty, select the products you like to buy...</h2>
           <img className="emptySelection-image" src={errorImage} />
         </div>
       </NavLink>

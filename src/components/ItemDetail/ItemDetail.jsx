@@ -18,7 +18,7 @@ function ItemDetail({ product }) {
           <NavLink to={`/detail/${product.id}`}>
             <Card.Img variant="top" src={product.img} />
             <Card.Title>
-              <span className="card-lblId">Id:</span> {product.id} -{" "}
+              {/* <span className="card-lblId">Id:</span> {product.id} -{" "} */}
               <span className="card-lblName">Name:</span> {product.name}{" "}
             </Card.Title>
             <Card.Text>
@@ -52,20 +52,16 @@ function ItemDetail({ product }) {
               Add {itemInCart && `(In cart: ${itemInCart.cartUnits})`}
             </Button>
           </div>
-
           <div className="cardReturn">
             <NavLink to={`/`}>
               <Button
                 variant={itemInCart ? "outline-success" : "outline-secondary"}
                 className="cardButton"
               >
-              {itemInCart ? "Continue shopping..." : "Back"}
+                {itemInCart ? "Continue shopping..." : "Back"}
               </Button>
             </NavLink>
-
           </div>
-
-
         </Card.Body>
       </Card>
     </div>

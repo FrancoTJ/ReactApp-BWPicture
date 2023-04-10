@@ -20,7 +20,7 @@ function Cart() {
               <Card.Body className="cartCard">
                 <NavLink className="cartCard-Link" to={`/detail/${item.id}`}>
                   <Card.Title>
-                    Id.{item.id} - Name: {item.name}{" "}
+                    {/* Id.{item.id} -  */} Name: {item.name}{" "}
                     {/*  - Cat: {item.category} */}
                   </Card.Title>
                   <Card.Img
