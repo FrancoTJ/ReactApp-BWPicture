@@ -1,25 +1,33 @@
-import { NavLink } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../utils/CartContext";
 
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 
 function NavBar() {
+  const { cartCountItems } = useContext(CartContext);
+
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="text-light">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      className="text-light"
+    >
       <Container>
-      <NavLink to="/" className="nav-link">
-        <Navbar.Brand to="/">BWPic</Navbar.Brand>
+        <NavLink to="/" className="nav-link">
+          <Navbar.Brand to="/">BWPic</Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <NavLink to="/category/nature" className="nav-link nav-link-nature">
-            {/* <NavLink to="/category"  className={({isActive}) => isActive ? 'text-light nav-link-nature' : 'text-danger nav-link-nature'} > */}
+              {/* <NavLink to="/category"  className={({isActive}) => isActive ? 'text-light nav-link-nature' : 'text-danger nav-link-nature'} > */}
               Nature
             </NavLink>
             <NavLink to="/category/gaming" className="nav-link nav-link-gaming">
@@ -29,14 +37,13 @@ function NavBar() {
               Movies
             </NavLink>
           </Nav>
-          <Nav>
-            {/* <Nav.Link href="/cart">
-              <CartWidget />
-            </Nav.Link> */}
-            <NavLink to='/cart'>
-              <CartWidget />
-            </NavLink>
-          </Nav>
+          {cartCountItems() > 0 && (
+            <Nav>
+              <NavLink to="/cart">
+                <CartWidget />
+              </NavLink>
+            </Nav>
+           )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
