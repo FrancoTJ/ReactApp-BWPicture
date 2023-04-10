@@ -12,7 +12,7 @@ h1, h3 {
   display: inline;
 }
 
-.cardRemoveButton{
+.cardRemoveButton, .cardEmpty, .cartCheckout{
   margin: 10px;
 }
 

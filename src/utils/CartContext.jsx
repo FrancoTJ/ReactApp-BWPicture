@@ -44,6 +44,9 @@ const CartContextProvider = ({ children }) => {
       return accumulator + Item.price * Item.cartUnits;
     }, 0);
   };
+  const cartEmpty = () => {
+    setCartItems([])
+  };
 
   return (
     <CartContext.Provider
@@ -54,6 +57,7 @@ const CartContextProvider = ({ children }) => {
         cartCountItems,
         cartTotalPriceItems,
         removeCartItem,
+        cartEmpty
       }}
     >
       {children}
