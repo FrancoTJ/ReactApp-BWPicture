@@ -3,7 +3,7 @@ import "./ItemList.css";
 
 function ItemList(props) {
   return (
-    <>
+    <div className="itemListContainer">
       {props.list.map((p) => (
         <Item
           key={p.id}
@@ -15,16 +15,8 @@ function ItemList(props) {
           img={p.img}
         />
       ))}{" "}
-    </>
+    </div>
   );
 }
 
 export default ItemList;
-
-// {/* <Item
-//   id={producto.id}
-//   name={producto.name}
-//   stock={producto.stock}
-//   category={producto.category}
-//   img={producto.img}
-// /> */}

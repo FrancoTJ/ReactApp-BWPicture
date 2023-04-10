@@ -1,6 +1,7 @@
-.itemList {
-  /* border-style: solid;
-  border-color: skyblue; */
+.itemListContainer {
   padding: 8px;
   margin: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

@@ -1,7 +1,9 @@
 .emptySelection {
-    text-align: center;
-  }
+  text-align: center;
+  padding: 8px;
+  margin: 8px;
+}
 
 .emptySelection-text {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }

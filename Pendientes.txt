@@ -1,0 +1,10 @@
+-Agregar unos 20 elementos, imágenes de pelis también
+ imagen chica y grande?
+-en detrail que la imagen se vea más grande
+-sombra en NavBar
+-Separar componentes complejos, el réndering que se convierta en un children
+
+
+
+    <div className="itemListContainer">
+      </div>
