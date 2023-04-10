@@ -14,7 +14,7 @@ function Item(props) {
             </Card.Title>
             <Card.Img variant="top" src={props.img} />
             <Card.Text>
-               Cat: {props.category} - Price: ${props.price}
+               Cat.: {props.category} - Price: ${props.price}
             </Card.Text>
 
 

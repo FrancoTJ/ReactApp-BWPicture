@@ -1,0 +1,23 @@
+.cartCard {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+h1, h3 {
+  padding: 30px;
+}
+
+.card-title {
+  display: inline;
+}
+
+.cardRemoveButton{
+  margin: 10px;
+}
+
+
+.cartCard-Link:hover {
+  transition: all 1s ease;
+  background:#dee0fd;
+}
