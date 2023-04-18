@@ -1,5 +1,6 @@
 import CartItemsListWithin from "../CartItemsListWithin/CartItemListWithin";
-import CartItemsSummary from "../CartItemsSummary/CartItemsSummary";
+import CartDataClient from "../CartDataClient/CartDataClient";
+import CartFinish from "../CartFinish/CartFinish";
 
 import "./Cart.css";
 
@@ -8,7 +9,8 @@ function Cart() {
   return (
     <>
       <CartItemsListWithin />
-      <CartItemsSummary />
+      <CartDataClient />
+      <CartFinish />
     </>
   );
 }

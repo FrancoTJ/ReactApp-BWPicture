@@ -6,14 +6,20 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { useContext } from "react";
 
 import { CartContext } from "../../utils/CartContext";
+import CartItemLessButton from "../CartItemLessButton/CartItemLessButton";
 
 function CartItemsListWithin() {
   const {
     cartItems,
+    cartState,
     removeCartItem,
     addCartItem,
     lessCartItem,
+    cartCountItems,
+    cartTotalPriceItems,
   } = useContext(CartContext);
+  let countItems = cartCountItems();
+  let totalPrice = cartTotalPriceItems();
 
   return (
     <>
@@ -23,13 +29,11 @@ function CartItemsListWithin() {
           <Card.Body className="cartCard">
             <NavLink className="cartCard-Link" to={`/detail/${item.id}`}>
               <Card.Title>
-                {/* Id.{item.id} -  */} Name: {item.name}{" "}
-                {/*  - Cat: {item.category} */}
+                {/* Id.{item.id} -  */} Name: {item.name}
               </Card.Title>
               <Card.Img src={item.img} style={{ maxWidth: 100, padding: 10 }} />
             </NavLink>
             <Card.Text>
-              {" "}
               Unit price: ${item.price} - Quantity:
               {item?.cartUnits <= 1 ? ( //Theres no way to disable OverlayTrigger? cause code repetition
                 <OverlayTrigger
@@ -61,6 +65,8 @@ function CartItemsListWithin() {
                   -
                 </Button>
               )}
+
+
               {item.cartUnits}
               {item?.cartUnits >= item.stock ? ( //Theres no way to disable OverlayTrigger? cause code repetition
                 <OverlayTrigger
@@ -104,6 +110,9 @@ function CartItemsListWithin() {
           </Card.Body>
         </Card>
       ))}
+      <h3>
+        Total Units: {countItems} - Total Price: ${totalPrice}
+      </h3>
     </>
   );
 }

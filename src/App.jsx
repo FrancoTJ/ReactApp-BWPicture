@@ -21,7 +21,6 @@ export function App() {
         <Route path="/category/:selCategory" element={<ItemListContainer />} />
         <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
         <Route path="/cart" element={<CartContainer />} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<FailRoute />} />
       </Routes>
       </CartContextProvider>

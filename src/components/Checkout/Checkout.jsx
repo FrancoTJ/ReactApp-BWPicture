@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useContext } from "react";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 import { CartContext } from "../../utils/CartContext";
 import Loading from "../Loading/Loading";
@@ -36,7 +36,6 @@ function Checkout() {
         })),
         total: cartTotalPriceItems(),
       };
-
       console.log(generatedOrder);
 
       const db = getFirestore();
@@ -67,41 +66,7 @@ function Checkout() {
             </h2>
 
             <h3>Orden número: {confirmedOrder._key.path.segments[1]}.</h3>
-            <h3>Listado de artículos:</h3>
-            {cartItems.map((item) => (
-              <Card key={item.id}>
-                <Card.Body className="cartCard">
-                  <NavLink className="cartCard-Link" to={`/detail/${item.id}`}>
-                    <Card.Title>
-                      Id.{item.id} - Name: {item.name}{" "}
-                    </Card.Title>
-                    <Card.Img
-                      src={item.img}
-                      style={{ maxWidth: 100, padding: 10 }}
-                    />
-                  </NavLink>
-                  <Card.Text>
-                    {" "}
-                    Unit price: ${item.price} - Quantity: {item.cartUnits} -
-                    Total: $ {item.price * item.cartUnits}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            ))}
           </div>
-          <h3>
-            Total Units: {cartCountItems()} - Total Price: $
-            {cartTotalPriceItems()}
-          </h3>
-          <NavLink to={`/`}>
-            <Button
-              className="cardFinishCheckout"
-              variant="success"
-              onClick={() => cartEmpty()}
-            >
-              Finish Checkout...
-            </Button>
-          </NavLink>
         </>
       ) : (
         <NavLink to={`/`}>
