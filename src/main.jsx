@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { initFirestore } from './components/firebase/config'
+
 import App from './App'
 import './index.css'
-import { initFirestore } from './components/firebase/config'
 
 initFirestore()
 

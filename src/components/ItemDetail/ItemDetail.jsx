@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
 import { useContext } from "react";
+
 import { CartContext } from "../../utils/CartContext";
 import "./ItemDetail.css";
 

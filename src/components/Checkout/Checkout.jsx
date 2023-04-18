@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useContext } from "react";
-import { CartContext } from "../../utils/CartContext";
 
+import { CartContext } from "../../utils/CartContext";
 import Loading from "../Loading/Loading";
 import "./Checkout.css";
 
@@ -18,8 +18,8 @@ function Checkout() {
   useEffect(() => {
     setLoading(true);
     if (cartCountItems() == 0) {
-      setconfirmation("")
-      setLoading(false)
+      setconfirmation("");
+      setLoading(false);
     } else {
       //Datos del comprador hardcodeados a modo de prueba. El resto de los datos se toman del carrito.
       const generatedOrder = {
@@ -28,11 +28,11 @@ function Checkout() {
           phone: "099 123 456",
           email: "jhonb@gmail.com",
         },
-        products: cartItems.map((product) => ({
-          id: product.id,
-          title: product.name,
-          price: product.price,
-          units: product.cartUnits,
+        items: cartItems.map((item) => ({
+          id: item.id,
+          title: item.name,
+          price: item.price,
+          units: item.cartUnits,
         })),
         total: cartTotalPriceItems(),
       };
@@ -47,8 +47,8 @@ function Checkout() {
           setConfirmedOrder(order);
           console.log(order);
         })
-        .catch((error) => console.log(error))
-        // .finally((result) => console.log("finally"));
+        .catch((error) => console.log(error));
+      // .finally((result) => console.log("finally"));
     }
   }, []);
 

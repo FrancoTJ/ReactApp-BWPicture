@@ -13,7 +13,7 @@ import EmptySelection from "../EmptySelection/EmptySelection";
 import Loading from "../Loading/Loading";
 import "./ItemListContainer.css";
 
-function ItemListContainer(props) {
+function ItemListContainer() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { selCategory } = useParams();

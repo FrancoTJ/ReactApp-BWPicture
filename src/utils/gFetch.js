@@ -1,3 +1,5 @@
+// Ya no en uso, utilizado como mock durante etapa de Desarrollo
+
 let productos = [
   { id: 1, name: "PixelArt Mario", category:'gaming', price:100, stock: 10, img:'https://graceful-pothos-e73712.netlify.app/img/mariKart1.jpg' },
   { id: 2, name: "PixelArt Hero", category:'gaming', price:120, stock: 4, img:'https://graceful-pothos-e73712.netlify.app/img/pixel-hero.jpg' },

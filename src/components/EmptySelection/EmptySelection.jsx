@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+
 import errorImage from "../../assets/technicalDificulties.jpg";
 import "./EmptySelection.css";
 

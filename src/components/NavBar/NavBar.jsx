@@ -3,8 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../../utils/CartContext";
 
+import { CartContext } from "../../utils/CartContext";
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 
