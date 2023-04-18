@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 import { useContext } from "react";
 import { CartContext } from "../../utils/CartContext";
@@ -13,14 +15,15 @@ function Cart() {
     cartTotalPriceItems,
     removeCartItem,
     cartEmpty,
-    cartCheckout,
+    addCartItem,
+    lessCartItem,
   } = useContext(CartContext);
   let countItems = cartCountItems();
   let totalPrice = cartTotalPriceItems();
 
   return (
     <>
-      <h1>Shopping Cart:</h1>
+      <h2>List Items:</h2>
       {cartItems.map((item) => (
         <Card key={item.id}>
           <Card.Body className="cartCard">
@@ -33,8 +36,69 @@ function Cart() {
             </NavLink>
             <Card.Text>
               {" "}
-              Unit price: ${item.price} - Quantity: {item.cartUnits} - Total: ${" "}
-              {item.price * item.cartUnits}
+              Unit price: ${item.price} - Quantity:
+              {item?.cartUnits <= 1 ? (
+                <OverlayTrigger
+                  delay={{ show: 200, hide: 400 }}
+                  overlay={
+                    <Tooltip id="tooltip-cardItemLess">
+                      Click "X" button to remove
+                    </Tooltip>
+                  }
+                >
+                  <span className="d-inline-block">
+                    <Button
+                      className="cardItemLess"
+                      variant="secondary"
+                      disabled={item?.cartUnits <= 1}
+                      onClick={() => lessCartItem(item)}
+                    >
+                      -
+                    </Button>
+                  </span>
+                </OverlayTrigger>
+              ) : (
+                <Button
+                  className="cardItemLess"
+                  variant="secondary"
+                  disabled={item?.cartUnits <= 1}
+                  onClick={() => lessCartItem(item)}
+                >
+                  -
+                </Button>
+              )}
+              {item.cartUnits}
+              {item?.cartUnits >= item.stock ? (
+                <OverlayTrigger
+                  delay={{ show: 100, hide: 400 }}
+                  overlay={
+                    <Tooltip id="tooltip-cardItemMore">
+                      Not enough stock
+                    </Tooltip>
+                  }
+                >
+                  <span className="d-inline-block">
+                    <Button
+                      className="cardItemMore"
+                      variant="secondary"
+                      disabled={item?.cartUnits >= item.stock}
+                      onClick={() => addCartItem(item)}
+                    >
+                      +
+                    </Button>
+                  </span>
+                </OverlayTrigger>
+              ) : (
+                <Button
+                  className="cardItemMore"
+                  variant="secondary"
+                  disabled={item?.cartUnits >= item.stock}
+                  onClick={() => addCartItem(item)}
+                >
+                  +
+                </Button>
+              )}
+              - Total: $ {item.price * item.cartUnits}
             </Card.Text>
             <Button
               className="cardRemoveButton"

@@ -23,6 +23,20 @@ const CartContextProvider = ({ children }) => {
     }
   };
 
+  const lessCartItem = (Item) => {
+    let position = cartItems.findIndex((product) => product.id == Item.id);
+    if (position != -1) {
+      //Si ya existe en listado
+      setCartItems(
+        cartItems.map((Item) =>
+          Item.id === cartItems[position].id
+            ? { ...Item, cartUnits: cartItems[position].cartUnits - 1 }
+            : { ...Item }
+        )
+      )
+    }
+  }
+
   const removeCartItem = (Item) => {
     setCartItems(
       cartItems.filter((Product) => Product.id != Item.id)
@@ -53,6 +67,7 @@ const CartContextProvider = ({ children }) => {
       value={{
         cartItems,
         addCartItem,
+        lessCartItem,
         cartFindItem,
         cartCountItems,
         cartTotalPriceItems,

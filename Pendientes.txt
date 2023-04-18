@@ -6,5 +6,48 @@
 
 
 
-    <div className="itemListContainer">
+
       </div>
+
+
+
+
+// Import the functions you need from the SDKs you need
+
+import { initializeApp } from "firebase/app";
+
+import { getAnalytics } from "firebase/analytics";
+
+// TODO: Add SDKs for Firebase products that you want to use
+
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+
+// Your web app's Firebase configuration
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyB5yRC6D7VQkTLafHRBqR_LukJ2DkSBYeU",
+
+  authDomain: "bwpic-react.firebaseapp.com",
+
+  projectId: "bwpic-react",
+
+  storageBucket: "bwpic-react.appspot.com",
+
+  messagingSenderId: "661771608337",
+
+  appId: "1:661771608337:web:fcc59fded901fe326eacb0",
+
+  measurementId: "G-X1ES06KZFK"
+
+};
+
+
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+
+const analytics = getAnalytics(app);

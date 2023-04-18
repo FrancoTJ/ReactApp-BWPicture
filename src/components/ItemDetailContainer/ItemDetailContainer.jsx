@@ -8,7 +8,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import "./ItemDetailContainer.css";
 
 function ItemDetailContainer() {
-  const [oneProduct, setOneProduct] = useState();
+  const [oneItem, setOneItem] = useState();
   const [loading, setLoading] = useState(true);
   const { idProduct } = useParams();
 
@@ -17,7 +17,7 @@ function ItemDetailContainer() {
     const query = doc(db, "products", idProduct);
     getDoc(query)
       .then((document) =>
-        setOneProduct({ id: document.id, ...document.data() })
+        setOneItem({ id: document.id, ...document.data() })
       )
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
@@ -27,7 +27,7 @@ function ItemDetailContainer() {
     <Loading />
   ) : (
     <div className="itemListContainer">
-      {oneProduct ? <ItemDetail product={oneProduct} /> : <EmptySelection />}
+      {oneItem ? <ItemDetail item={oneItem} /> : <EmptySelection />}
     </div>
   );
 }

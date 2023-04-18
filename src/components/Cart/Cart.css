@@ -1,21 +1,22 @@
 .cartCard {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
 }
 
-h1, h3 {
-  padding: 30px;
+@media (min-width: 768px) { .cartCard {flex-direction: row; align-items: baseline;}}
+
+h1, h2, h3, .cartCard-Link, .card-text {
+  padding: 10px;
 }
 
 .card-title {
   display: inline;
 }
 
-.cardRemoveButton, .cardEmpty, .cartCheckout{
+.cardRemoveButton, .cardEmpty, .cartCheckout, .cardItemLess, .cardItemMore{
   margin: 10px;
 }
-
 
 .cartCard-Link:hover {
   transition: all 1s ease;
